@@ -1,0 +1,46 @@
+name: Deploy Airin Landing Page
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'airin-landing/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        working-directory: ./airin-landing
+        run: npm install
+
+      - name: Build (if needed)
+        working-directory: ./airin-landing
+        run: npm run build || echo "No build script"
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./airin-landing
+          publish_branch: gh-pages
+
+      # 🎉 Notify via Airin (demonstrating the tool)
+      - name: Notify Telegram via Airin
+        if: always()
+        run: |
+          curl -X POST https://hooks.zapier.com/hooks/catch/25470556/uzws3gf/ \
+          -H "Content-Type: application/json" \
+          -d "{\"message\": \"🚀 Airin Landing deployed! Status: ${{ job.status }}\", \"status\": \"${{ job.status }}\", \"repository\": \"${{ github.repository }}\", \"url\": \"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\"}"

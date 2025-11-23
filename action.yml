@@ -1,0 +1,21 @@
+name: 'Airin - CI/CD Log Analyzer'
+description: 'Analyzes GitHub Actions logs and sends notifications to Telegram via Zapier webhook'
+author: 'Albantanie'
+
+branding:
+  icon: 'zap'
+  color: 'blue'
+
+inputs:
+  zapier_webhook:
+    description: 'Zapier webhook URL (optional, uses default if not provided)'
+    required: false
+    default: 'https://hooks.zapier.com/hooks/catch/25470556/uzws3gf/'
+  log_file:
+    description: 'Path to log file (optional, defaults to job log)'
+    required: false
+    default: ''
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'

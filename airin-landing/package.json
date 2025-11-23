@@ -1,0 +1,30 @@
+{
+  "name": "airin-landing",
+  "version": "1.0.0",
+  "description": "Landing page for Airin - AI-Powered CI/CD Notification Tool",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx http-server -p 3000 -o",
+    "build": "echo 'No build step needed for static site'",
+    "deploy": "echo 'Deploy to your hosting provider'"
+  },
+  "keywords": [
+    "airin",
+    "ci-cd",
+    "landing-page",
+    "telegram",
+    "notifications"
+  ],
+  "author": "Albantanie <syahrulfaiz30102003@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@albantanie/airin": "^1.2.1"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Orangutan168/prop2goapi-admin-frontend.git"
+  }
+}
