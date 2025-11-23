@@ -1,53 +1,30 @@
 {
-  "name": "@albantanie/airin",
-  "version": "1.2.1",
-  "description": "Simple CI/CD notification tool for GitHub Actions and GitLab CI with Zapier webhook integration",
-  "main": "dist/index.js",
+  "name": "airin-landing",
+  "version": "1.0.0",
+  "description": "Landing page for Airin - AI-Powered CI/CD Notification Tool",
+  "main": "index.html",
   "scripts": {
-    "build": "ncc build src/index.js -o dist --source-map --license licenses.txt",
-    "prepare": "npm run build",
-    "test": "echo \"No tests yet\" && exit 0"
+    "dev": "npx http-server -p 3000 -o",
+    "build": "echo 'No build step needed for static site'",
+    "deploy": "echo 'Deploy to your hosting provider'"
   },
   "keywords": [
-    "github-actions",
-    "gitlab-ci",
+    "airin",
     "ci-cd",
-    "zapier",
+    "landing-page",
     "telegram",
-    "webhook",
-    "notifications",
-    "devops",
-    "deployment"
+    "notifications"
   ],
   "author": "Albantanie <syahrulfaiz30102003@gmail.com>",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Orangutan168/prop2goapi-admin-frontend.git",
-    "directory": "airin"
-  },
-  "bugs": {
-    "url": "https://github.com/Orangutan168/prop2goapi-admin-frontend/issues"
-  },
-  "homepage": "https://github.com/Orangutan168/prop2goapi-admin-frontend/tree/main/airin#readme",
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
-  },
-  "files": [
-    "dist",
-    "action.yml",
-    "README.md",
-    "LICENSE"
-  ],
   "dependencies": {
-    "@actions/core": "^1.10.1",
-    "@actions/github": "^6.0.0"
+    "@albantanie/airin": "^1.2.1"
   },
   "devDependencies": {
-    "@vercel/ncc": "^0.38.1"
+    "http-server": "^14.1.1"
   },
-  "engines": {
-    "node": ">=20.0.0"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Orangutan168/prop2goapi-admin-frontend.git"
   }
 }
