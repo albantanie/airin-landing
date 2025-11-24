@@ -21,71 +21,82 @@
         <span></span><span></span><span></span>
       </button>
       <nav class="nav-links">
-        <a href="#features">Features</a>
+        <a href="#features">Why Airin</a>
+        <a href="#signals">Signals</a>
         <a href="#workflow">Workflow</a>
         <a href="#connect">Integrations</a>
-        <a href="#cta">Get Airin</a>
+        <a href="#faq">FAQ</a>
       </nav>
       <div class="nav-actions">
         <a class="ghost" href="https://github.com/Orangutan168/prop2goapi-admin-frontend/tree/main/airin" target="_blank" rel="noreferrer">Docs</a>
-        <a class="solid" href="https://github.com/Orangutan168/prop2goapi-admin-frontend" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="solid" href="https://github.com/marketplace/actions/airin-ci-cd-notifier" target="_blank" rel="noreferrer">Use action</a>
       </div>
     </header>
 
     <main>
-      <section class="hero" id="home">
+      <section class="hero" id="top">
         <div class="hero-copy">
           <div class="pill">
             <span class="status-dot"></span>
-            Live for GitHub Actions · v1.2
+            GitHub Actions & GitLab ready · v1.2
           </div>
-          <h1>Instant CI/CD signals that keep shipping teams aligned.</h1>
-          <p>Airin broadcasts deploy outcomes from GitHub Actions and GitLab CI to your channels through Zapier and Telegram. No more refreshing pipelines—get the right signal where your team lives.</p>
+          <h1>Airin keeps deploy signals moving to the right people.</h1>
+          <p>Ship without refreshing pipelines. Airin listens to your CI, packages the essentials, and delivers them to Telegram, Zapier, or any webhook you own.</p>
           <div class="hero-cta">
-            <a class="solid" href="https://github.com/marketplace/actions/airin-ci-cd-notifier" target="_blank" rel="noreferrer">Use the Action</a>
-            <a class="ghost" href="#workflow">See the workflow</a>
+            <a class="solid" href="https://github.com/marketplace/actions/airin-ci-cd-notifier" target="_blank" rel="noreferrer">Add to workflow</a>
+            <a class="ghost" href="#workflow">See how it ships</a>
           </div>
-          <div class="meta">
-            <span>Works with GitHub Actions · GitLab CI</span>
-            <span>Telegram + Zapier friendly</span>
-            <span>Self-hosted? Bring your own hook</span>
-          </div>
+          <ul class="checks">
+            <li>Instant status + run URL for every deploy</li>
+            <li>One lightweight hook for GitHub Actions or GitLab</li>
+            <li>Zero extra infra—just your webhook secret</li>
+          </ul>
         </div>
-        <div class="hero-card">
-          <div class="card-header">
-            <div class="chip success">Deploy</div>
-            <div class="chip neutral">main</div>
-            <div class="chip subtle">github-pages</div>
+        <div class="status-board">
+          <div class="board-header">
+            <span class="tag success">Deploy</span>
+            <span class="tag subtle">main</span>
+            <span class="tag dark">github-pages</span>
+            <span class="meta-pill">Airin notifier</span>
           </div>
-          <div class="card-body">
-            <div class="log-line">
+          <div class="board-body">
+            <div class="log-row">
               <span class="dot success"></span>
-              <span class="log-label">airin/notify</span>
-              <span class="log-text">🚀 Landing deployed to GitHub Pages</span>
+              <div>
+                <p class="label">airin/notify</p>
+                <p class="log-text">🚀 Landing shipped to gh-pages</p>
+              </div>
+              <span class="time">08:21</span>
             </div>
-            <div class="log-line">
+            <div class="log-row">
               <span class="dot info"></span>
-              <span class="log-label">zapier</span>
-              <span class="log-text">Telegram alert posted</span>
+              <div>
+                <p class="label">zapier</p>
+                <p class="log-text">Posted Telegram alert · #release</p>
+              </div>
+              <span class="time">08:22</span>
             </div>
-            <div class="log-line">
+            <div class="log-row">
               <span class="dot neutral"></span>
-              <span class="log-label">artifact</span>
-              <span class="log-text">Build skipped (static site)</span>
+              <div>
+                <p class="label">artifact</p>
+                <p class="log-text">Static assets reused · build skipped</p>
+              </div>
+              <span class="time">08:23</span>
             </div>
           </div>
-          <div class="card-footer">
-            <div class="summary">
-              <span class="title">Outcome</span>
-              <span class="value success">Success</span>
+          <div class="board-footer">
+            <div>
+              <p class="subdued">Outcome</p>
+              <p class="value success">Success</p>
             </div>
-            <div class="summary">
-              <span class="title">Duration</span>
-              <span class="value">58s</span>
+            <div>
+              <p class="subdued">Duration</p>
+              <p class="value">58s</p>
             </div>
-            <div class="summary">
-              <span class="title">Channel</span>
-              <span class="value">Telegram + Zapier</span>
+            <div>
+              <p class="subdued">Channels</p>
+              <p class="value">Telegram · Zapier</p>
             </div>
           </div>
         </div>
@@ -94,48 +105,92 @@
       <section class="section" id="features">
         <div class="section-header">
           <p class="eyebrow">Why Airin</p>
-          <h2>Single-source deploy signal, everywhere your team collaborates.</h2>
-          <p class="lede">Airin watches your pipelines and fans out crisp messages—fast enough for incident response, calm enough for daily shipping.</p>
+          <h2>Single source of deploy truth, delivered where your team works.</h2>
+          <p class="lede">Airin keeps teammates aligned with concise signals—enough for incident response, calm enough for daily shipping.</p>
         </div>
         <div class="grid features">
           <article class="feature-card">
             <div class="icon gradient-green">↗</div>
-            <h3>Frictionless setup</h3>
-            <p>Drop the GitHub Action or GitLab job into your pipeline. No infra, no secrets beyond your webhook.</p>
+            <h3>Drop-in setup</h3>
+            <p>Paste the Action or GitLab job, point to your webhook, and push. No extra runners or services.</p>
           </article>
           <article class="feature-card">
             <div class="icon gradient-blue">⚡</div>
             <h3>Signal over noise</h3>
-            <p>Only the essentials: status, branch, run URL, and deploy target. Your channels stay readable.</p>
+            <p>Branch, status, target, run URL, and duration—kept short so channels stay readable.</p>
           </article>
           <article class="feature-card">
             <div class="icon gradient-amber">🔔</div>
-            <h3>Zapier + Telegram</h3>
-            <p>Trigger Telegram alerts or any Zapier flow—handoffs, incident triage, release notes, you decide.</p>
+            <h3>Ready-made hooks</h3>
+            <p>Telegram alerts out of the box. Zapier for email, Slack, incidents, or release notes.</p>
           </article>
           <article class="feature-card">
             <div class="icon gradient-lilac">🛡</div>
-            <h3>Works across clouds</h3>
-            <p>GitHub Pages, Vercel, Render, or your own runner—Airin only needs the webhook endpoint.</p>
+            <h3>Cloud agnostic</h3>
+            <p>Pages, Vercel, Render, or on-prem—Airin only needs HTTPS to deliver your payload.</p>
           </article>
         </div>
       </section>
 
-      <section class="section highlight" id="workflow">
+      <section class="section highlight" id="signals">
         <div class="section-header">
-          <p class="eyebrow">Ready-to-ship workflow</p>
-          <h2>Deploy the landing page with Airin watching every run.</h2>
-          <p class="lede">This repo ships the landing page via GitHub Pages on pushes to <strong>main</strong>. Airin posts the result so you never miss a failed publish.</p>
+          <p class="eyebrow">Signals, not noise</p>
+          <h2>Every notification ships the same crisp payload.</h2>
+          <p class="lede">Airin formats deploy updates with context your teammates actually use—no log firehose, no mystery failures.</p>
+        </div>
+        <div class="signal-layout">
+          <div class="signal-card">
+            <div class="signal-head">
+              <span class="pill light">Zapier</span>
+              <span class="pill outline">Telegram</span>
+              <span class="pill outline">Webhook</span>
+            </div>
+            <div class="signal-body">
+              <p class="signal-title">🚀 Deploy succeeded on main</p>
+              <ul>
+                <li><strong>Status:</strong> success</li>
+                <li><strong>Branch:</strong> main → gh-pages</li>
+                <li><strong>Run URL:</strong> ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}</li>
+                <li><strong>Message:</strong> Airin Landing deployed</li>
+              </ul>
+            </div>
+            <div class="signal-foot">
+              <span>Payload stays under 1KB</span>
+              <span>Send it anywhere</span>
+            </div>
+          </div>
+          <div class="signal-copy">
+            <div class="mini-card">
+              <p class="mini-title">Add in 2 lines</p>
+              <p>Use <code>Orangutan168/airin@main</code> with your Zapier hook and message template. Done.</p>
+            </div>
+            <div class="mini-card">
+              <p class="mini-title">Human-friendly</p>
+              <p>Clear verbs, unicode icons, and timestamps so humans know what happened at a glance.</p>
+            </div>
+            <div class="mini-card">
+              <p class="mini-title">Ops-safe defaults</p>
+              <p>Works with restricted runners—Airin only touches the webhook endpoint you provide.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="workflow">
+        <div class="section-header">
+          <p class="eyebrow">Deploy playbook</p>
+          <h2>The same flow that publishes this landing page.</h2>
+          <p class="lede">Push to <strong>main</strong>, publish to <strong>gh-pages</strong>, notify via Airin. Reuse the pattern for any product site or docs.</p>
         </div>
         <div class="workflow">
           <ol>
-            <li><strong>Push to main</strong> updates everything under <code>airin-landing/</code>.</li>
-            <li><strong>Build step</strong> runs <code>npm run build</code> (skipped for static pages).</li>
-            <li><strong>Publish</strong> via <code>peaceiris/actions-gh-pages</code> to the <code>gh-pages</code> branch.</li>
-            <li><strong>Notify</strong> Airin → Zapier → Telegram with the run URL and status.</li>
+            <li><strong>Push to main.</strong> Everything under <code>airin-landing/</code> triggers the workflow.</li>
+            <li><strong>Build (optional).</strong> Runs <code>npm run build</code>—skips cleanly for static pages.</li>
+            <li><strong>Publish to GitHub Pages.</strong> Uses <code>peaceiris/actions-gh-pages</code> on <code>gh-pages</code>.</li>
+            <li><strong>Notify.</strong> Airin posts status, branch, and run URL to your chosen hook.</li>
           </ol>
           <div class="snippet">
-            <div class="snippet-header">Drop Airin into your workflow</div>
+            <div class="snippet-header">Add Airin to your job</div>
             <pre><code>jobs:
   deploy:
     steps:
@@ -154,22 +209,47 @@
       <section class="section" id="connect">
         <div class="section-header">
           <p class="eyebrow">Integrations</p>
-          <h2>Choose the lane that fits your team.</h2>
-          <p class="lede">Airin ships with Zapier + Telegram out of the box, while keeping hooks simple enough to plug into any notification bus.</p>
+          <h2>Pick the lane that fits your team.</h2>
+          <p class="lede">Airin ships ready-made connectors and keeps the payload simple so you can forward it anywhere else.</p>
         </div>
         <div class="grid integrations">
           <div class="integration-card">
             <div class="badge">Telegram</div>
-            <p>Lightweight alerts for deploys, incidents, and approvals.</p>
+            <p>Instant mobile-friendly alerts for deploys, incidents, and approvals.</p>
           </div>
           <div class="integration-card">
             <div class="badge">Zapier</div>
-            <p>Fan out to email, Slack, or project tools without touching your pipeline logic.</p>
+            <p>Fan out to email, Slack, Notion, or PagerDuty without changing pipeline logic.</p>
           </div>
           <div class="integration-card">
             <div class="badge">Webhooks</div>
-            <p>BYO endpoint—Airin forwards status payloads so you can log, store, or visualize them.</p>
+            <p>Bring your own endpoint—log, store, or visualize the same payload anywhere.</p>
           </div>
+        </div>
+      </section>
+
+      <section class="section faq" id="faq">
+        <div class="section-header">
+          <p class="eyebrow">FAQ</p>
+          <h2>Everything you need to get started fast.</h2>
+        </div>
+        <div class="faq-grid">
+          <article class="faq-card">
+            <h3>How long does setup take?</h3>
+            <p>Drop the Action into your workflow, pass a webhook URL, and push. Most teams are live in under 5 minutes.</p>
+          </article>
+          <article class="faq-card">
+            <h3>Does it work with GitLab?</h3>
+            <p>Yes. Airin can be called from GitLab CI jobs with the same payload. Point the webhook at your Zapier or Telegram endpoint.</p>
+          </article>
+          <article class="faq-card">
+            <h3>What about secrets?</h3>
+            <p>Only your webhook secret is required. Airin does not touch repo contents or external services beyond that endpoint.</p>
+          </article>
+          <article class="faq-card">
+            <h3>Can we self-host the notifications?</h3>
+            <p>Absolutely. Swap the webhook URL to your own service; Airin forwards the status, branch, and run link.</p>
+          </article>
         </div>
       </section>
 
