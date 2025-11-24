@@ -15,32 +15,87 @@ jobs:
 
     steps:
       - name: Checkout code
+        id: checkout
         uses: actions/checkout@v4
 
       - name: Setup Node.js
+        id: setup-node
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
       - name: Install dependencies
+        id: install
         working-directory: ./airin-landing
-        run: npm install
+        run: |
+          npm install 2>&1 | tee install.log
+          echo "install_status=success" >> $GITHUB_OUTPUT
 
       - name: Build (if needed)
+        id: build
         working-directory: ./airin-landing
-        run: npm run build || echo "No build script"
+        run: |
+          npm run build 2>&1 | tee build.log || echo "No build script found"
+          echo "build_status=completed" >> $GITHUB_OUTPUT
 
       - name: Deploy to GitHub Pages
+        id: deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./airin-landing
           publish_branch: gh-pages
 
-      # 🎉 Notify via Airin (demonstrating the tool)
-      - name: Notify Telegram via Airin
+      # Enhanced CI/CD Analysis to Telegram via Zapier
+      - name: Send Enhanced Analysis to Telegram
         if: always()
         run: |
+          # Capture build logs (last 20 lines)
+          BUILD_LOGS=""
+          if [ -f "airin-landing/build.log" ]; then
+            BUILD_LOGS=$(tail -20 airin-landing/build.log | sed 's/"/\\"/g' | tr '\n' ' ')
+          fi
+
+          # Capture install logs (last 10 lines)
+          INSTALL_LOGS=""
+          if [ -f "airin-landing/install.log" ]; then
+            INSTALL_LOGS=$(tail -10 airin-landing/install.log | sed 's/"/\\"/g' | tr '\n' ' ')
+          fi
+
+          # Determine error logs if job failed
+          ERROR_LOGS=""
+          if [ "${{ job.status }}" != "success" ]; then
+            ERROR_LOGS="Deployment failed - check individual step status"
+          fi
+
+          # Get file changes count
+          FILES_CHANGED=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | wc -l)
+
+          # Send comprehensive data to webhook
           curl -X POST https://hooks.zapier.com/hooks/catch/25470556/uzws3gf/ \
           -H "Content-Type: application/json" \
-          -d "{\"message\": \"🚀 Airin Landing deployed! Status: ${{ job.status }}\", \"status\": \"${{ job.status }}\", \"repository\": \"${{ github.repository }}\", \"url\": \"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\"}"
+          -d "{
+            \"workflow_name\": \"${{ github.workflow }}\",
+            \"repository\": \"${{ github.repository }}\",
+            \"branch\": \"${{ github.ref_name }}\",
+            \"commit_sha\": \"${{ github.sha }}\",
+            \"commit_message\": \"${{ github.event.head_commit.message }}\",
+            \"author\": \"${{ github.actor }}\",
+            \"status\": \"${{ job.status }}\",
+            \"run_id\": \"${{ github.run_id }}\",
+            \"run_url\": \"${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}\",
+            \"project\": \"Airin Landing Page\",
+            \"environment\": \"GitHub Pages\",
+            \"files_changed\": \"$FILES_CHANGED\",
+            \"build_logs\": \"$BUILD_LOGS\",
+            \"install_logs\": \"$INSTALL_LOGS\",
+            \"error_logs\": \"$ERROR_LOGS\",
+            \"steps\": {
+              \"checkout\": \"${{ steps.checkout.outcome }}\",
+              \"setup_node\": \"${{ steps.setup-node.outcome }}\",
+              \"install\": \"${{ steps.install.outcome }}\",
+              \"build\": \"${{ steps.build.outcome }}\",
+              \"deploy\": \"${{ steps.deploy.outcome }}\"
+            },
+            \"deployment_url\": \"https://${{ github.repository_owner }}.github.io/airin\"
+          }"
