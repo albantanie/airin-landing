@@ -43,7 +43,8 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./airin-landing
+          # Publish the built output (generated in airin-landing/dist)
+          publish_dir: ./airin-landing/dist
           publish_branch: gh-pages
 
       # Enhanced CI/CD Analysis to Telegram via Zapier

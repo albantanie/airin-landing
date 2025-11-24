@@ -1,10 +1,10 @@
 {
   "name": "@albantanie/airin",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Simple CI/CD notification tool for GitHub Actions and GitLab CI with Zapier webhook integration",
   "main": "dist/index.js",
   "scripts": {
-    "build": "ncc build src/index.js -o dist --source-map --license licenses.txt",
+    "build": "node ./node_modules/@vercel/ncc/dist/ncc/cli.js build src/index.js -o dist --source-map --license licenses.txt",
     "prepare": "npm run build",
     "test": "echo \"No tests yet\" && exit 0"
   },
@@ -42,7 +42,8 @@
   ],
   "dependencies": {
     "@actions/core": "^1.10.1",
-    "@actions/github": "^6.0.0"
+    "@actions/github": "^6.0.0",
+    "@albantanie/airin": "^1.2.2"
   },
   "devDependencies": {
     "@vercel/ncc": "^0.38.1"

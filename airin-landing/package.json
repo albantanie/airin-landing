@@ -6,5 +6,8 @@
   "scripts": {
     "build": "node build.js"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@albantanie/airin": "^1.2.2"
+  }
 }
