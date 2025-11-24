@@ -1,1 +1,220 @@
-ini adalah airin html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Airin | CI/CD Notifications for GitHub Actions & GitLab</title>
+  <meta name="description" content="Airin keeps your teams in sync with instant CI/CD notifications for GitHub Actions and GitLab via Zapier and Telegram.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="nav">
+      <div class="brand">
+        <div class="dot"></div>
+        <span>Airin</span>
+      </div>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#connect">Integrations</a>
+        <a href="#cta">Get Airin</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="ghost" href="https://github.com/Orangutan168/prop2goapi-admin-frontend/tree/main/airin" target="_blank" rel="noreferrer">Docs</a>
+        <a class="solid" href="https://github.com/Orangutan168/prop2goapi-admin-frontend" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-copy">
+          <div class="pill">
+            <span class="status-dot"></span>
+            Live for GitHub Actions · v1.2
+          </div>
+          <h1>Instant CI/CD signals that keep shipping teams aligned.</h1>
+          <p>Airin broadcasts deploy outcomes from GitHub Actions and GitLab CI to your channels through Zapier and Telegram. No more refreshing pipelines—get the right signal where your team lives.</p>
+          <div class="hero-cta">
+            <a class="solid" href="https://github.com/marketplace/actions/airin-ci-cd-notifier" target="_blank" rel="noreferrer">Use the Action</a>
+            <a class="ghost" href="#workflow">See the workflow</a>
+          </div>
+          <div class="meta">
+            <span>Works with GitHub Actions · GitLab CI</span>
+            <span>Telegram + Zapier friendly</span>
+            <span>Self-hosted? Bring your own hook</span>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="card-header">
+            <div class="chip success">Deploy</div>
+            <div class="chip neutral">main</div>
+            <div class="chip subtle">github-pages</div>
+          </div>
+          <div class="card-body">
+            <div class="log-line">
+              <span class="dot success"></span>
+              <span class="log-label">airin/notify</span>
+              <span class="log-text">🚀 Landing deployed to GitHub Pages</span>
+            </div>
+            <div class="log-line">
+              <span class="dot info"></span>
+              <span class="log-label">zapier</span>
+              <span class="log-text">Telegram alert posted</span>
+            </div>
+            <div class="log-line">
+              <span class="dot neutral"></span>
+              <span class="log-label">artifact</span>
+              <span class="log-text">Build skipped (static site)</span>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="summary">
+              <span class="title">Outcome</span>
+              <span class="value success">Success</span>
+            </div>
+            <div class="summary">
+              <span class="title">Duration</span>
+              <span class="value">58s</span>
+            </div>
+            <div class="summary">
+              <span class="title">Channel</span>
+              <span class="value">Telegram + Zapier</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="features">
+        <div class="section-header">
+          <p class="eyebrow">Why Airin</p>
+          <h2>Single-source deploy signal, everywhere your team collaborates.</h2>
+          <p class="lede">Airin watches your pipelines and fans out crisp messages—fast enough for incident response, calm enough for daily shipping.</p>
+        </div>
+        <div class="grid features">
+          <article class="feature-card">
+            <div class="icon gradient-green">↗</div>
+            <h3>Frictionless setup</h3>
+            <p>Drop the GitHub Action or GitLab job into your pipeline. No infra, no secrets beyond your webhook.</p>
+          </article>
+          <article class="feature-card">
+            <div class="icon gradient-blue">⚡</div>
+            <h3>Signal over noise</h3>
+            <p>Only the essentials: status, branch, run URL, and deploy target. Your channels stay readable.</p>
+          </article>
+          <article class="feature-card">
+            <div class="icon gradient-amber">🔔</div>
+            <h3>Zapier + Telegram</h3>
+            <p>Trigger Telegram alerts or any Zapier flow—handoffs, incident triage, release notes, you decide.</p>
+          </article>
+          <article class="feature-card">
+            <div class="icon gradient-lilac">🛡</div>
+            <h3>Works across clouds</h3>
+            <p>GitHub Pages, Vercel, Render, or your own runner—Airin only needs the webhook endpoint.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section highlight" id="workflow">
+        <div class="section-header">
+          <p class="eyebrow">Ready-to-ship workflow</p>
+          <h2>Deploy the landing page with Airin watching every run.</h2>
+          <p class="lede">This repo ships the landing page via GitHub Pages on pushes to <strong>main</strong>. Airin posts the result so you never miss a failed publish.</p>
+        </div>
+        <div class="workflow">
+          <ol>
+            <li><strong>Push to main</strong> updates everything under <code>airin-landing/</code>.</li>
+            <li><strong>Build step</strong> runs <code>npm run build</code> (skipped for static pages).</li>
+            <li><strong>Publish</strong> via <code>peaceiris/actions-gh-pages</code> to the <code>gh-pages</code> branch.</li>
+            <li><strong>Notify</strong> Airin → Zapier → Telegram with the run URL and status.</li>
+          </ol>
+          <div class="snippet">
+            <div class="snippet-header">Drop Airin into your workflow</div>
+            <pre><code>jobs:
+  deploy:
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Orangutan168/airin@main
+        with:
+          webhook_url: ${{ secrets.ZAPIER_WEBHOOK }}
+          message: "🚀 Airin Landing deployed! Status: ${{ job.status }}"
+          status: ${{ job.status }}
+          repository: ${{ github.repository }}
+          url: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="connect">
+        <div class="section-header">
+          <p class="eyebrow">Integrations</p>
+          <h2>Choose the lane that fits your team.</h2>
+          <p class="lede">Airin ships with Zapier + Telegram out of the box, while keeping hooks simple enough to plug into any notification bus.</p>
+        </div>
+        <div class="grid integrations">
+          <div class="integration-card">
+            <div class="badge">Telegram</div>
+            <p>Lightweight alerts for deploys, incidents, and approvals.</p>
+          </div>
+          <div class="integration-card">
+            <div class="badge">Zapier</div>
+            <p>Fan out to email, Slack, or project tools without touching your pipeline logic.</p>
+          </div>
+          <div class="integration-card">
+            <div class="badge">Webhooks</div>
+            <p>BYO endpoint—Airin forwards status payloads so you can log, store, or visualize them.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section cta" id="cta">
+        <div class="cta-card">
+          <div class="cta-content">
+            <p class="eyebrow">Get started</p>
+            <h2>Wire Airin into your next deploy.</h2>
+            <p class="lede">Add the GitHub Action, point it at your Zapier hook, and ship with confident updates.</p>
+            <div class="hero-cta">
+              <a class="solid" href="https://github.com/marketplace/actions/airin-ci-cd-notifier" target="_blank" rel="noreferrer">Use Airin Action</a>
+              <a class="ghost" href="https://github.com/Orangutan168/prop2goapi-admin-frontend/tree/main/airin" target="_blank" rel="noreferrer">View docs</a>
+            </div>
+          </div>
+          <div class="cta-metrics">
+            <div class="metric">
+              <span class="value">58s</span>
+              <span class="label">Typical deploy</span>
+            </div>
+            <div class="metric">
+              <span class="value">2 hooks</span>
+              <span class="label">Zapier + Telegram</span>
+            </div>
+            <div class="metric">
+              <span class="value">Zero</span>
+              <span class="label">New infra to run</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="brand">
+        <div class="dot"></div>
+        <span>Airin</span>
+      </div>
+      <p>CI/CD notification toolkit for GitHub Actions and GitLab. Built for fast, confident deploys.</p>
+      <div class="footer-links">
+        <a href="https://github.com/Orangutan168/prop2goapi-admin-frontend" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://github.com/Orangutan168/prop2goapi-admin-frontend/tree/main/airin" target="_blank" rel="noreferrer">Docs</a>
+        <a href="mailto:syahrulfaiz30102003@gmail.com">Contact</a>
+      </div>
+    </footer>
+  </div>
+  <script src="./script.js"></script>
+</body>
+</html>

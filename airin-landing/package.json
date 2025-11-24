@@ -1,0 +1,10 @@
+{
+  "name": "airin-landing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static landing page for the Airin CI/CD notification tool.",
+  "scripts": {
+    "build": "echo \"Static site - nothing to build.\""
+  },
+  "license": "MIT"
+}
